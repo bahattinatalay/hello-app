@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-
+        yaml '''  
 kind: Pod
 spec:
   containers:
@@ -11,6 +11,7 @@ spec:
     ports:
     - containerPort: 80
   restartPolicy: Always
+'''
         }
     }
 }
