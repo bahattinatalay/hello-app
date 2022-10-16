@@ -5,7 +5,7 @@ pipeline {
 kind: Pod
 spec:
   containers:
-  - name: hello-app-pod
+  - name: "hello-app-pod"
     image: 'b6atalay/hello-app'
     imagePullPolicy: Always
     ports:
