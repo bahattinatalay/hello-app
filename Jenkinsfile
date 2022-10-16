@@ -16,5 +16,13 @@ spec:
   restartPolicy: Always
 '''
         }
+        stages{
+          stage("A"){
+              steps{
+                  echo "====++++executing A++++===="
+              }
+             
+          }
+        }
     }
 }
