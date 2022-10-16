@@ -1,7 +1,10 @@
 pipeline {
     agent {
         kubernetes {
-        yaml '''  
+          label 'hello-app'
+          defaultContainer 'hello-app-pod'          
+          yaml ''' 
+apiVersion: v1           
 kind: Pod
 spec:
   containers:
