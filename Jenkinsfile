@@ -1,21 +1,16 @@
 pipeline {
-    agent none
-  stages {
-    stage('docker run') {
-        agent {
-        docker {
-            image 'b6atalay/hello-app'
+    agent {
+        kubernetes {
+
+kind: Pod
+spec:
+  containers:
+  - name: hello-app-pod
+    image: 'b6atalay/hello-app'
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 80
+  restartPolicy: Always
         }
-      }
-      steps {
-        echo 'Pulling the welcome image'
-      }
     }
-    stage('Docker Build') {
-    	agent any
-      steps {
-      	sh 'docker run -it --name hello/app-in-pod -p b6atalay/hello-app'
-      }
-    }
-  }
 }
