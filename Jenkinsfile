@@ -1,7 +1,9 @@
 pipeline {
+agent any
+
   stages{
-    stage any {
-    agent {
+    stage ('Build') {
+      steps {
         kubernetes {
           label 'hello-app'
           defaultContainer 'hello-app-pod'          
