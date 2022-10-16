@@ -1,12 +1,23 @@
 pipeline {
-    agent any
+    agent none
     stages {
-        stage('build') {
+        stage('docker run') {
+            agent {
+                docker {
+                    image 'b6atalay/hello-app'
+                }
             steps {
-                echo 'Compiling the python code'
-                sh 'docker run -it --name hello/app-in-pod b6atalay/hello-app'
+                echo 'Pulling the welcome image'
+                
             }
         }
+        stage('Docker Build') {
+    	    agent any
+            steps {
+      	sh 'docker run -it --name hello/app-in-pod -p b6atalay/hello-app'
+      }
+    }
         
     }
+  }
 }
