@@ -1,4 +1,5 @@
 pipeline {
+  stages{
     agent {
         kubernetes {
           label 'hello-app'
@@ -16,13 +17,6 @@ spec:
   restartPolicy: Always
 '''
         }
-        stages{
-          stage("A"){
-              steps{
-                  echo "====++++executing A++++===="
-              }
-             
-          }
-        }
     }
+}
 }
