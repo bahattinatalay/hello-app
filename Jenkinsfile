@@ -1,5 +1,6 @@
 pipeline {
   stages{
+    stage any {
     agent {
         kubernetes {
           label 'hello-app'
@@ -18,5 +19,6 @@ spec:
 '''
         }
     }
+}
 }
 }
