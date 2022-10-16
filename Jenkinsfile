@@ -33,6 +33,7 @@ spec:
         image: b6atalay/hello-app
         ports:
         - containerPort: 80
+        command: ['python','welcome.py']
 '''
         }
     }
