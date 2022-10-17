@@ -1,7 +1,8 @@
 pipeline {
   agent {
     kubernetes {
-      yaml """
+      yaml '''
+
 apiVersion: apps/v1 
 kind: Deployment 
 metadata:
