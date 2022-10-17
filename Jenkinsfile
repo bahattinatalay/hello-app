@@ -37,10 +37,9 @@ spec:
     stages {
         stage('Build ') {
             steps {
-                checkout scm {
-                        sh "kubectl apply -f . "
+                 sh "kubectl apply -f . "
                     }
                 }
             }
         }
-    }
+    
