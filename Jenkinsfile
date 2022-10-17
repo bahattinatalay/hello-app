@@ -1,13 +1,7 @@
 pipeline {
-agent any
-
-  stages{
-    stage ('Build') {
-      steps {
-        kubernetes {
-          label 'hello-app'
-          defaultContainer 'hello-app-pod'          
-          yaml ''' 
+  agent {
+    kubernetes {
+      yaml """
 apiVersion: apps/v1 
 kind: Deployment 
 metadata:
@@ -35,8 +29,17 @@ spec:
         - containerPort: 80
         command: ['python','welcome.py']
 '''
+
+      }
+    }
+    
+    stages {
+        stage('Build ') {
+            steps {
+                checkout scm {
+                        sh "kubectl apply -f . "
+                    }
+                }
+            }
         }
     }
-}
-}
-}
