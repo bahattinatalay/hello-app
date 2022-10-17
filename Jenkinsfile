@@ -3,8 +3,8 @@ pipeline {
     kubernetes {
       yaml '''
 
-apiVersion: apps/v1 
-kind: Deployment 
+apiVersion: v1 
+kind: Pod
 metadata:
   name: hello-app-deploy
 spec:
