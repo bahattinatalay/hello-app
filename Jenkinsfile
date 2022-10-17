@@ -1,15 +1,8 @@
 pipeline {
 	agent none
   stages {
-  	stage('Maven Install') {
-    	agent {
-      	docker {
-        	image 'maven:3.5.0'
-        }
-      }
-      steps {
-      	sh 'mvn clean install'
+  	stage('docker Install') {
+    	sh "docker build -t welcome-app ."
       }
     }
   }
-}
