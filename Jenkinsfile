@@ -1,45 +1,15 @@
 pipeline {
-  agent {
-    kubernetes {
-      yaml '''
-
-apiVersion: v1 
-kind: Pod
-metadata:
-  name: hello-app-deploy
-spec:
-  replicas: 1 
-  selector:  
-    matchLabels:
-      app: hello
-  minReadySeconds: 10 
-  strategy:
-    type: RollingUpdate 
-    rollingUpdate:
-      maxUnavailable: 1 
-      maxSurge: 1 
-  template: 
-    metadata:
-      labels:
-        app: hello    
-    spec:
-      containers:
-      - name: hello-app-pod
-        image: b6atalay/hello-app
-        ports:
-        - containerPort: 80
-        command: ['python','welcome.py']
-'''
-
+	agent none
+  stages {
+  	stage('Maven Install') {
+    	agent {
+      	docker {
+        	image 'maven:3.5.0'
+        }
+      }
+      steps {
+      	sh 'mvn clean install'
       }
     }
-    
-    stages {
-        stage('Build ') {
-            steps {
-                 sh "kubectl apply -f . "
-                    }
-                }
-            }
-        }
-    
+  }
+}
