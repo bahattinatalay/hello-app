@@ -4,7 +4,7 @@ pipeline {
   	stage('docker Install') {
       steps {
     	sh "docker build -t welcome-app ."
-	sh "docker run -it welcome-app "      	      
+	sh "docker run -d welcome-app "      	      
       }
     }
   }
