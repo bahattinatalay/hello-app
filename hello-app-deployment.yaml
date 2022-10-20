@@ -10,7 +10,8 @@ spec:
     matchLabels:
       app: hello-app
   replicas: 3
-
+  strategy: 
+    type: Recreate
   template:
     metadata:
       labels:
@@ -26,7 +27,6 @@ spec:
           limits:
             cpu: 100m
             memory: 100Mi
-
         ports:
         - containerPort: 80
           name: hello-app-port
