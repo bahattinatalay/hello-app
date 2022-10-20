@@ -10,7 +10,7 @@ pipeline {
    stage('Docker Push') {
     	agent any
          steps {
-      	withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'Password', usernameVariable: 'Username')]) 
+      	withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'Password'), usernameVariable: 'Username']) 
       sh "docker login -u ${env.Username} -p ${env.Password}"
       sh 'docker push b6atalay/welcome-app3'
  	 }
