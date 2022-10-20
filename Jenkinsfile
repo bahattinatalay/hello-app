@@ -8,9 +8,9 @@ pipeline {
       }
   
         stage('Docker Push') {
-
+            steps {
         withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'Password', usernameVariable: 'Username')])         
-        steps {
+        
             sh "docker login -u ${env.Username} -p ${env.Password}"
             sh 'docker push b6atalay/welcome-app3'
             }
