@@ -3,7 +3,7 @@ pipeline {
   stages {
         stage('docker Build') {
             steps {
-                sh "docker build -t b6atalay/welcome-app3 ."
+                sh "docker build -t b6atalay/welcome-app4 ."
             }
       }
   
@@ -12,7 +12,7 @@ pipeline {
          withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'Password', usernameVariable: 'Username')])    {     
         
             sh "docker login -u ${env.Username} -p ${env.Password}"
-            sh 'docker push b6atalay/welcome-app3'
+            sh 'docker push b6atalay/welcome-app4'
             }
         }
         }
