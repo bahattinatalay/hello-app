@@ -17,6 +17,7 @@ pipeline {
        }
      
    stage('Deploy on Kubernetes') {
+    	agent any
        steps  {
         withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: 'kubernetes-admin@kubernetes', credentialsId: 'jenkins-k8s', namespace: 'kube-system', serverUrl: 'https://172.31.8.195:6443') {
     	
