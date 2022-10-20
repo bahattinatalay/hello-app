@@ -8,16 +8,12 @@ pipeline {
       }
   
         stage('Docker Push') {
-        steps {
-                sh "docker login -u ${env.Username} -p ${env.Password}"
+
+        withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'Password', usernameVariable: 'Username')]) {        
+             
+            sh "docker login -u ${env.Username} -p ${env.Password}"
             sh 'docker push b6atalay/welcome-app3'
-        }
-
-        agent any
-
-        tools {
-            dockerTool 'docker-jenkins'
-        }
+            }
         }
 
 
