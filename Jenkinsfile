@@ -18,9 +18,9 @@ pipeline {
      
    stage('Deploy on Kubernetes') {
        steps  {
-        withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: 'kubernetes-admin@kubernetes', credentialsId: 'jenkins-k8s', namespace: 'kube-system', serverUrl: 'https://172.31.8.195:6443') 
+        withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: 'kubernetes-admin@kubernetes', credentialsId: 'jenkins-k8s', namespace: 'kube-system', serverUrl: 'https://172.31.8.195:6443') {
     	
-        sh 'kubectl apply -f .'       
+        sh 'kubectl apply -f .'       }
        }    
    }
   
