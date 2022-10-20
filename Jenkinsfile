@@ -4,7 +4,6 @@ pipeline {
    stage('docker Build') {
        steps {
     	 sh "docker build -t b6atalay/welcome-app3 ."
-//	   sh "docker run --name hello-task -d -p 80:80 b6atalay/welcome-app3 "
        }
       }
     
@@ -20,10 +19,10 @@ pipeline {
    stage('Deploy on Kubernetes') {
        steps  {
         withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: 'kubernetes-admin@kubernetes', credentialsId: 'jenkins-k8s', namespace: 'kube-system', serverUrl: 'https://172.31.8.195:6443') 
-        
-    	kubectl apply -f .
-        }
-    
-    }
+    	
+        sh 'kubectl apply -f .'       
+       }    
    }
- }
+  
+}
+}
