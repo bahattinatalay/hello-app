@@ -19,7 +19,7 @@ pipeline {
 
         stage('Deploy on Kubernetes') {
         steps {
-            sh 'kubectl delete -f .'
+            sh 'kubectl apply -f .'
         }
 
         options {
