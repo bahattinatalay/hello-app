@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: hello-app-container
-        image: b6atalay/welcome-app4
+        image: b6atalay/welcome-app5
         resources:
           requests:
             cpu: 100m
